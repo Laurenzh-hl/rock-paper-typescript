@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors</title>
+    <style>
+        body {
+          margin: 0;
+          background: #FEE834;
+          text-align: center;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    
+        button {
+          font-size: 1.2rem;
+          border: 0.25rem solid black;
+          padding: 0.5rem;
+          margin: 1rem 0.5rem;
+        }
+
+        .game-buttons {
+            display: none;
+        }
+
+        .output {
+            font-size: 2rem;
+            font-weight: bold;
+            line-height: 2rem;
+        }
+      </style>
+</head>
+<body>
+    <button class="start-button" onclick="startGame()">Start Game</button>
+    <div class="game-buttons">
+        <button onclick="handleUserChoice(0)">Rock</button>
+        <button onclick="handleUserChoice(1)">Paper</button>
+        <button onclick="handleUserChoice(2)">Scissors</button>
+      </div>
+    <section class="output"></section>
+</body>
+<script src="js/game.js"></script>
+</html>
