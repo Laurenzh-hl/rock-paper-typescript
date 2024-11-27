@@ -17,6 +17,16 @@
           border: 0.25rem solid black;
           padding: 0.5rem;
           margin: 1rem 0.5rem;
+          cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #feb634;
+            transition: 0.2s;
+        }
+
+        .reset-button {
+            display: none;
         }
 
         .game-buttons {
@@ -28,16 +38,24 @@
             font-weight: bold;
             line-height: 2rem;
         }
+
+        .winner-msg {
+            font-size: 4rem;
+            font-weight: bolder;
+            line-height: 4rem;
+        }
       </style>
 </head>
 <body>
     <button class="start-button" onclick="startGame()">Start Game</button>
     <div class="game-buttons">
-        <button onclick="handleUserChoice(0)">Rock</button>
-        <button onclick="handleUserChoice(1)">Paper</button>
-        <button onclick="handleUserChoice(2)">Scissors</button>
+        <button class="option" disabled onclick="handleUserChoice(0)">Rock</button>
+        <button class="option" disabled onclick="handleUserChoice(1)">Paper</button>
+        <button class="option" disabled onclick="handleUserChoice(2)">Scissors</button>
       </div>
     <section class="output"></section>
+    <section class="winner-msg"></section>
+    <button class="reset-button" onclick="reset()">Reset</button>
 </body>
 <script src="js/game.js"></script>
 </html>
