@@ -2,6 +2,12 @@
 var userScore = 0;
 var computerScore = 0;
 var counter = 0;
+var moves;
+(function (moves) {
+    moves[moves["Rock"] = 0] = "Rock";
+    moves[moves["Paper"] = 1] = "Paper";
+    moves[moves["Scissors"] = 2] = "Scissors";
+})(moves || (moves = {}));
 function startGame() {
     userScore = 0;
     computerScore = 0;
@@ -31,6 +37,41 @@ function handleUserChoice(choice) {
         move: choice,
         player: "User",
     };
+    var computerGuess = getComputerMove();
+    outputMessage("You chose ".concat(moves[userGuess.move]));
+    outputMessage("Computer chose ".concat(moves[computerGuess.move]));
+    var winner = calculateWinner(userGuess, computerGuess);
+    if (winner.player === "User") {
+        userScore++;
+    }
+    if (winner.player === "Computer") {
+        computerScore++;
+    }
+    outputMessage("".concat(winner.player, " wins with ").concat(moves[winner.move]));
+}
+function calculateWinner(guessOne, guessTwo) {
+    if (guessOne.move == guessTwo.move)
+        return { player: "Neither", move: guessOne.move };
+    switch (guessOne.move) {
+        case moves.Rock:
+            if (guessTwo.move === moves.Paper) {
+                return guessTwo;
+            }
+            break;
+        case moves.Paper:
+            if (guessTwo.move === moves.Scissors) {
+                return guessTwo;
+            }
+            break;
+        case moves.Scissors:
+            if (guessTwo.move === moves.Rock) {
+                return guessTwo;
+            }
+            break;
+        default:
+            return guessOne;
+    }
+    return guessOne;
 }
 // let computerGuess: guess = getComputerMove();
 // console.log(computerGuess);
